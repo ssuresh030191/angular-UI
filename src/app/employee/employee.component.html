@@ -1,0 +1,34 @@
+<h2>Employees</h2>
+<table class="table table-bordered center-align">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Employee ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Salary</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let employee of employeeData">
+    <tr *ngIf="showEdit">
+      <td><input type="number" [(ngModel)]="employee.employeeId"></td>
+      <td><input type="text" [(ngModel)]="employee.firstName"></td>
+      <td><input type="text" [(ngModel)]="employee.lastName"></td>
+      <td><input type="number" [(ngModel)]="employee.salary"></td>
+      <td><input type="text" [(ngModel)]="employee.dob"></td>
+      <td><input type="text" [(ngModel)]="employee.email"></td>
+      <td><button class="btn btn-primary" (click)="updateEmployee()">Update</button></td>
+    </tr>
+    <tr *ngIf="!showEdit">
+      <td>{{employee.employeeId}}</td>
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.dob}}</td>
+      <td>{{employee.email}}</td>
+      <td><button class="btn btn-primary" (click)="editEmployee()">Edit</button></td>
+    </tr>
+  </tbody>
+</table>
